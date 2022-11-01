@@ -45,6 +45,12 @@ namespace BobGame
             if (pictureBox2.Top < 0) pictureBox2.Top = 0;
             if (pictureBox2.Left < 0) pictureBox2.Left = 0;
             if (pictureBox2.Top > 400) pictureBox2.Top = 400;
+
+            if (pictureBox2.Left > 600)
+            {
+                Form2 newForm = new Form2();
+                newForm.Show();
+            }
         }
     }
 }
