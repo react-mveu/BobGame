@@ -16,5 +16,29 @@ namespace BobGame
         {
             InitializeComponent();
         }
+
+        private void Form2_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Up) pictureBox4.Top = pictureBox4.Top - 10;
+            if (e.KeyCode == Keys.Down) pictureBox4.Top = pictureBox4.Top + 10;
+            if (e.KeyCode == Keys.Left) pictureBox4.Left = pictureBox4.Left - 10;
+            if (e.KeyCode == Keys.Right) pictureBox4.Left = pictureBox4.Left + 10;
+
+            if (pictureBox4.Bounds.IntersectsWith(pictureBox1.Bounds))
+            {
+                pictureBox4.Left = 0;
+                pictureBox4.Top = 0;
+            }
+            if (pictureBox4.Bounds.IntersectsWith(pictureBox2.Bounds))
+            {
+                pictureBox4.Left = 0;
+                pictureBox4.Top = 0;
+            }
+            if (pictureBox4.Bounds.IntersectsWith(pictureBox3.Bounds))
+            {
+                pictureBox4.Left = 0;
+                pictureBox4.Top = 0;
+            }
+        }
     }
 }
