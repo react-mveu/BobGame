@@ -19,15 +19,28 @@ namespace BobGame
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-            pictureBox3.Top = pictureBox3.Top + 10;
-            pictureBox4.Top = pictureBox4.Top + 40;
-            pictureBox5.Top = pictureBox5.Top + 20;
-            pictureBox6.Top = pictureBox6.Top + 30;
+            if (pictureBox3.Top <= 0 &&
+                pictureBox4.Top <= 0 &&
+                pictureBox5.Top <= 0 &&
+                pictureBox6.Top <= 0)
+            {
+                timer2.Stop();
+                timer1.Start();
+            }
 
-            if (pictureBox3.Top == 400) pictureBox3.Top = 0;
-            if (pictureBox4.Top == 400) pictureBox4.Top = 0;
-            if (pictureBox5.Top == 400) pictureBox5.Top = 0;
-            if (pictureBox6.Top == 330) pictureBox6.Top = 0;
+            pictureBox3.Top = pictureBox3.Top + 10;
+            pictureBox4.Top = pictureBox4.Top + 10;
+            pictureBox5.Top = pictureBox5.Top + 10;
+            pictureBox6.Top = pictureBox6.Top + 10;
+
+            if (pictureBox3.Top >= 400 &&
+                pictureBox4.Top >= 400 &&
+                pictureBox5.Top >= 400 &&
+                pictureBox6.Top >= 400)
+            {
+                timer1.Stop();
+                timer2.Start();
+            }
         }
 
         private void Form1_KeyDown(object sender, KeyEventArgs e)
@@ -50,6 +63,32 @@ namespace BobGame
             {
                 Form2 newForm = new Form2();
                 newForm.Show();
+            }
+        }
+
+        private void timer2_Tick(object sender, EventArgs e)
+        {
+            if (pictureBox3.Top >= 400 &&
+                pictureBox4.Top >= 400 &&
+                pictureBox5.Top >= 400 &&
+                pictureBox6.Top >= 400)
+            {
+                timer1.Stop();
+                timer2.Start();
+            }
+
+            pictureBox3.Top = pictureBox3.Top - 10;
+            pictureBox4.Top = pictureBox4.Top - 10;
+            pictureBox5.Top = pictureBox5.Top - 10;
+            pictureBox6.Top = pictureBox6.Top - 10;
+
+            if (pictureBox3.Top <= 0 &&
+                pictureBox4.Top <= 0 &&
+                pictureBox5.Top <= 0 &&
+                pictureBox6.Top <= 0)
+            {
+                timer2.Stop();
+                timer1.Start();
             }
         }
     }
